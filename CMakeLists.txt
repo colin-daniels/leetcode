@@ -17,7 +17,8 @@ add_executable(leetcode_test
         src/problems/727.cpp
         src/problems/587.cpp
         src/problems/774.cpp
-        src/problems/670.cpp)
+        src/problems/670.cpp
+        src/problems/867.cpp)
 
 target_link_libraries(leetcode_test gtest_main)
 
