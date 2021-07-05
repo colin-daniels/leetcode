@@ -4,22 +4,33 @@ project(leetcode)
 set(CMAKE_CXX_STANDARD 20)
 
 include(FetchContent)
+
+# google test
 FetchContent_Declare(
-    googletest
-    URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip)
+        googletest
+        URL https://github.com/google/googletest/archive/refs/tags/release-1.11.0.zip)
 
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
-
 enable_testing()
-add_executable(leetcode_test
-        src/problems/727.cpp
-        src/problems/587.cpp
-        src/problems/774.cpp
-        src/problems/670.cpp
-        src/problems/867.cpp)
 
+# google benchmark
+FetchContent_Declare(benchmark URL https://github.com/google/benchmark/archive/refs/tags/v1.5.5.zip)
+FetchContent_MakeAvailable(benchmark)
+
+set(SOURCE_FILES
+        src/problems/26.cpp
+        src/problems/88.cpp
+        src/problems/146.cpp
+        src/problems/278.cpp
+        src/problems/384.cpp)
+
+# benchmark exe
+add_executable(leetcode_bench ${SOURCE_FILES})
+target_link_libraries(leetcode_bench gtest benchmark::benchmark_main)
+
+add_executable(leetcode_test ${SOURCE_FILES})
 target_link_libraries(leetcode_test gtest_main)
 
 include(GoogleTest)
