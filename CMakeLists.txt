@@ -24,6 +24,7 @@ set(SOURCE_FILES
         src/problems/44.cpp
         src/problems/88.cpp
         src/problems/146.cpp
+        src/problems/173.cpp
         src/problems/278.cpp
         src/problems/341.cpp
         src/problems/384.cpp)
